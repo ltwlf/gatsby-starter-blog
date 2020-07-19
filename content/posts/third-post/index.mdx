@@ -1,0 +1,42 @@
+---
+title: Getting started with Apollo GraphQL
+date: 2020-07-18
+image: ./apollo.jpeg
+imageAlt: A beach at sunset with crashing waves.
+---
+
+Hello, world! This is a
+Welcome! This tutorial guides you through building a full-stack, GraphQL-powered app with the Apollo platform.
+
+We want you to feel empowered to build your own production-ready app with Apollo, so we're skipping "Hello World" in favor of an example that's closer to "Real World", complete with authentication, pagination, testing, and more.
+
+Ready? Let's dive in!
+
+## Example Resolver
+
+```js
+const { ApolloServer } = require('apollo-server');
+const typeDefs = require('./schema');
+const { createStore } = require('./utils');
+
+const resolvers = require('./resolvers');
+
+const LaunchAPI = require('./datasources/launch');
+const UserAPI = require('./datasources/user');
+
+const store = createStore();
+
+const server = new ApolloServer({
+  typeDefs,
+
+  resolvers,
+  dataSources: () => ({
+    launchAPI: new LaunchAPI(),
+    userAPI: new UserAPI({ store })
+  })
+});
+
+server.listen().then(({ url }) => {
+  console.log(`🚀 Server ready at ${url}`);
+});
+```

@@ -8,12 +8,12 @@ module.exports = {
   // Customize your site metadata:
   siteMetadata: {
     title: `My Blog Title`,
-    author: `My Name`,
+    author: `Christian Glessner`,
     description: `My site description...`,
     social: [
       {
         name: `twitter`,
-        url: `https://twitter.com/gatsbyjs`,
+        url: `https://twitter.com/cglessner`,
       },
       {
         name: `github`,
